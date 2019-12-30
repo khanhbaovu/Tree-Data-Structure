@@ -30,7 +30,6 @@ node * Tree::make_node() {
    node *tp = new node;
    cout<<"Nhap id:";
    cin>>tp->id;
-   cout<<tp->left<<endl;
    tp->left = NULL;
    tp->right = NULL;
    return tp;
@@ -60,6 +59,10 @@ void Tree::insert_left(node *root, int value) {
         insert_left(root->left, value);
         insert_left(root->right, value);
     }
+    else if(root==T) {
+        cout<<"Create the root first!"<<endl;
+        make_root();
+     }
 }
 
 void Tree::insert_right(node *root, int value) {
@@ -76,6 +79,10 @@ void Tree::insert_right(node *root, int value) {
         }
         insert_right(root->left,value);
         insert_right(root->right, value);
+     }
+     else if(root==T) {
+        cout<<"Create the root first!"<<endl;
+        make_root();
      }
 }
 void Tree::remove_left(node *root, int value) {
@@ -97,6 +104,9 @@ void Tree::remove_left(node *root, int value) {
         }
         remove_left(root->left,value);
         remove_left(root->right,value);
+    }
+    else if(root==T) {
+        cout<<"The root is empty!"<<endl;
     }
 }
 
@@ -120,6 +130,9 @@ void Tree::remove_right(node *root, int value) {
         remove_right(root->left,value);
         remove_left(root->right,value);
       }
+      else if(root==T) {
+        cout<<"The root is empty!"<<endl;
+      }
 }
 
 void Tree::clearall(node *root) {
@@ -134,9 +147,7 @@ void Tree::clearall(node *root) {
         else {
              delete(root);
         }
-
       }
-
 }
 
 void Tree::seeall(node *root) {
@@ -153,8 +164,6 @@ void Tree::seeall(node *root) {
         seeall(root->right);
         return;
       }
-
-
 }
 
 void Tree::functionT() {
@@ -209,8 +218,6 @@ void Tree::functionT() {
 }
 
 int main() {
-
-
 
     return 0;
 }
